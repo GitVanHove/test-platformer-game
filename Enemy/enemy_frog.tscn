@@ -96,6 +96,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_med5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km450")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km450")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km450")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km450")
 }],
 "loop": true,
 "name": &"Idle",
@@ -129,8 +141,9 @@ shape = SubResource("RectangleShape2D_jpldc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_mcytr")
-animation = &"Idle"
+animation = &"Jump"
 autoplay = "Idle"
+frame_progress = 0.399099
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 position = Vector2(1, -11)
