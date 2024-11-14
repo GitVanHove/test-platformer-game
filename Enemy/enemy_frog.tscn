@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://bhw04euyfiab0"]
 
 [ext_resource type="Script" path="res://Enemy/enemy_frog.gd" id="1_1x75h"]
-[ext_resource type="Texture2D" uid="uid://byjlh3lmj6d8w" path="res://Sunny Land Collection Files/Assets/Props Items and VFX/Sunnyland FX/Spritesheets/enemy-deadth.png" id="1_v5iio"]
-[ext_resource type="Texture2D" uid="uid://5eidsfr3atwu" path="res://Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="2_8ers4"]
-[ext_resource type="Texture2D" uid="uid://qw1sn0cgxxhi" path="res://Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-jump.png" id="3_nf5t3"]
+[ext_resource type="Texture2D" uid="uid://byjlh3lmj6d8w" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland FX/Spritesheets/enemy-deadth.png" id="1_v5iio"]
+[ext_resource type="Texture2D" uid="uid://5eidsfr3atwu" path="res://Asset Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="2_8ers4"]
+[ext_resource type="Texture2D" uid="uid://qw1sn0cgxxhi" path="res://Asset Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-jump.png" id="3_nf5t3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpldc"]
 

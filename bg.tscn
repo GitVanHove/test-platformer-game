@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cijbxthr0t58j"]
 
 [ext_resource type="Script" path="res://Scripts/bg.gd" id="1_0msc4"]
-[ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://sunny-land/assets/environment/back.png" id="1_i05o7"]
-[ext_resource type="Texture2D" uid="uid://cyfci31svq81o" path="res://sunny-land/assets/environment/middle.png" id="2_73qqt"]
-[ext_resource type="Texture2D" uid="uid://rovkjivuwmeh" path="res://Sunny Land Collection Files/Assets/Environments/SunnyLand/Props/house.png" id="3_73kpn"]
-[ext_resource type="Texture2D" uid="uid://bt4qcgum0gwpn" path="res://Sunny Land Collection Files/Assets/Environments/SunnyLand/Props/plant-house.png" id="4_b5aj6"]
-[ext_resource type="Texture2D" uid="uid://k50urn4poh84" path="res://Sunny Land Collection Files/Assets/Environments/SunnyLand/Props/straw-house.png" id="5_ah4c0"]
+[ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://Asset Collection Files/sunny-land/assets/environment/back.png" id="1_i05o7"]
+[ext_resource type="Texture2D" uid="uid://cyfci31svq81o" path="res://Asset Collection Files/sunny-land/assets/environment/middle.png" id="2_73qqt"]
+[ext_resource type="Texture2D" uid="uid://rovkjivuwmeh" path="res://Asset Collection Files/Assets/Environments/SunnyLand/Props/house.png" id="3_73kpn"]
+[ext_resource type="Texture2D" uid="uid://bt4qcgum0gwpn" path="res://Asset Collection Files/Assets/Environments/SunnyLand/Props/plant-house.png" id="4_b5aj6"]
+[ext_resource type="Texture2D" uid="uid://k50urn4poh84" path="res://Asset Collection Files/Assets/Environments/SunnyLand/Props/straw-house.png" id="5_ah4c0"]
 
 [node name="BG" type="ParallaxBackground"]
 script = ExtResource("1_0msc4")

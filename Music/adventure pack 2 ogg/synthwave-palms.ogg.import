@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqk8efa6ai3oo"
+path="res://.godot/imported/synthwave-palms.ogg-01b6a1946a75e0b64d6aed46c4bc77a7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/adventure pack 2 ogg/synthwave-palms.ogg"
+dest_files=["res://.godot/imported/synthwave-palms.ogg-01b6a1946a75e0b64d6aed46c4bc77a7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
