@@ -39,6 +39,16 @@ func _on_player_detection_body_exited(body: Node2D) -> void:
 
 func _on_player_death_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		anim.play("Death")
-		await anim.animation_finished
-		self.queue_free()
+		death()
+
+
+func _on_player_collision_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		body.health -= 3
+		
+
+func death():
+	chase =  false
+	anim.play("Death")
+	await anim.animation_finished
+	self.queue_free()

@@ -36,6 +36,10 @@ func _physics_process(delta: float) -> void:
 	# Update velocity for stopping motion when no input
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if health <= 0:
+		queue_free()
+		get_tree().change_scene_to_file("res://main.tscn")
 
 	# Move the character
 	move_and_slide()
