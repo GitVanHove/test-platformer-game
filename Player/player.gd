@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var health = 10
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var anim = get_node("AnimationPlayer")

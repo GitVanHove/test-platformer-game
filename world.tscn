@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://byihrq5m1rd5i" path="res://Player/Player.tscn" id="1_nodyx"]
 [ext_resource type="Script" path="res://Scripts/bg.gd" id="1_sp1ho"]
 [ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://Asset Collection Files/sunny-land/assets/environment/back.png" id="2_3v7o2"]
-[ext_resource type="PackedScene" uid="uid://bhw04euyfiab0" path="res://Enemy/enemy_frog.tscn" id="5_dilxp"]
+[ext_resource type="PackedScene" uid="uid://bhw04euyfiab0" path="res://Enemy/Frog/enemy_frog.tscn" id="5_dilxp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq2sq"]
 texture = ExtResource("1_eyui0")
@@ -215,3 +215,9 @@ position = Vector2(133, 84)
 
 [node name="enemyFrog" parent="Enemy" instance=ExtResource("5_dilxp")]
 position = Vector2(525, 309)
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="Ui"]
+offset_right = 40.0
+offset_bottom = 23.0

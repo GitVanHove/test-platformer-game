@@ -11,7 +11,7 @@ var SPEED = 50
 func _physics_process(delta: float) -> void:
 	#Gravity frog
 	velocity += get_gravity() * delta
-	if chase == true:
+	if chase == true && anim.animation != "Death":
 		anim.play("Jump")
 		var direction = (player.position - self.position).normalized()
 		if direction.x > 0:
@@ -20,7 +20,8 @@ func _physics_process(delta: float) -> void:
 			get_node("AnimatedSprite2D").flip_h = false
 		velocity.x = direction.x * SPEED	
 	else:
-		anim.play("Idle")
+		if anim.animation != "Death":
+			anim.play("Idle")
 		velocity.x = 0
 		
 	move_and_slide()	
@@ -34,3 +35,10 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 func _on_player_detection_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		chase = false
+
+
+func _on_player_death_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		anim.play("Death")
+		await anim.animation_finished
+		self.queue_free()
