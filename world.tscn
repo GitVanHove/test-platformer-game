@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/bg.gd" id="1_sp1ho"]
 [ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://Asset Collection Files/sunny-land/assets/environment/back.png" id="2_3v7o2"]
 [ext_resource type="PackedScene" uid="uid://bhw04euyfiab0" path="res://Enemy/Frog/enemy_frog.tscn" id="5_dilxp"]
-[ext_resource type="PackedScene" uid="uid://dycmdwfs7t1fy" path="res://Items/Collectibles/Gold.tscn" id="6_us2ji"]
+[ext_resource type="PackedScene" uid="uid://dycmdwfs7t1fy" path="res://Items/Collectables/Gold.tscn" id="6_us2ji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq2sq"]
 texture = ExtResource("1_eyui0")
@@ -259,9 +259,9 @@ position = Vector2(133, 84)
 [node name="enemyFrog" parent="Enemy" instance=ExtResource("5_dilxp")]
 position = Vector2(525, 309)
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Collectables" type="Node2D" parent="."]
 
-[node name="Gold" parent="Items" instance=ExtResource("6_us2ji")]
+[node name="Gold" parent="Collectables" instance=ExtResource("6_us2ji")]
 position = Vector2(223, 322)
 
 [node name="Ui" type="CanvasLayer" parent="."]
