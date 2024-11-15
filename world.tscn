@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://gtjlacdueroa"]
+[gd_scene load_steps=12 format=4 uid="uid://gtjlacdueroa"]
 
 [ext_resource type="Texture2D" uid="uid://b211l4db3h6ry" path="res://Asset Collection Files/sunny-land/assets/environment/tileset.png" id="1_eyui0"]
 [ext_resource type="PackedScene" uid="uid://byihrq5m1rd5i" path="res://Player/Player.tscn" id="1_nodyx"]
 [ext_resource type="Script" path="res://Scripts/bg.gd" id="1_sp1ho"]
 [ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://Asset Collection Files/sunny-land/assets/environment/back.png" id="2_3v7o2"]
 [ext_resource type="PackedScene" uid="uid://bhw04euyfiab0" path="res://Enemy/Frog/enemy_frog.tscn" id="5_dilxp"]
+[ext_resource type="PackedScene" uid="uid://dycmdwfs7t1fy" path="res://Items/Collectibles/Gold.tscn" id="6_us2ji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq2sq"]
 texture = ExtResource("1_eyui0")
@@ -217,6 +218,20 @@ func _process(delta: float) -> void:
 	text = \"Gem: \" + str(Game.Gem)
 "
 
+[sub_resource type="GDScript" id="GDScript_4141t"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = \"Gold: \" + str(Game.Gold)
+"
+
 [node name="World" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -244,6 +259,11 @@ position = Vector2(133, 84)
 [node name="enemyFrog" parent="Enemy" instance=ExtResource("5_dilxp")]
 position = Vector2(525, 309)
 
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Gold" parent="Items" instance=ExtResource("6_us2ji")]
+position = Vector2(223, 322)
+
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="Health" type="Label" parent="Ui"]
@@ -257,11 +277,21 @@ text = "HP"
 script = SubResource("GDScript_js8ic")
 
 [node name="Gem" type="Label" parent="Ui"]
-offset_left = 619.0
+offset_left = 671.0
 offset_top = 10.0
-offset_right = 659.0
+offset_right = 725.0
 offset_bottom = 44.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Gem"
 script = SubResource("GDScript_m5oj5")
+
+[node name="Gold" type="Label" parent="Ui"]
+offset_left = 540.0
+offset_top = 10.0
+offset_right = 594.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Gold"
+script = SubResource("GDScript_4141t")

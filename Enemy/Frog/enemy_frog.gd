@@ -48,7 +48,7 @@ func _on_player_collision_body_entered(body: Node2D) -> void:
 		
 
 func death():
-	Game.Gem += 5
+	Game.Gold += 5
 	Utils.saveGame()
 	chase =  false
 	anim.play("Death")
