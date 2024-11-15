@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://buphdh2ekyfrx"]
+
+[ext_resource type="Texture2D" uid="uid://blucgg8mfufm4" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-1.png" id="1_lblsa"]
+[ext_resource type="Texture2D" uid="uid://b31mbaf656ryo" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-2.png" id="2_rskgo"]
+[ext_resource type="Texture2D" uid="uid://ceactut46he4h" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-3.png" id="3_41uh6"]
+[ext_resource type="Texture2D" uid="uid://b4tsyyuxsufum" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-4.png" id="4_4mdku"]
+[ext_resource type="Texture2D" uid="uid://g3shd4jvav4m" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland items/Sprites/gem/gem-5.png" id="5_16j33"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2kp1t"]
+radius = 7.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2o4m4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lblsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rskgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_41uh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4mdku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16j33")
+}],
+"loop": true,
+"name": &"GemIdle",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_2kp1t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2o4m4")
+animation = &"GemIdle"
+frame_progress = 0.877923
