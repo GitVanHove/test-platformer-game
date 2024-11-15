@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://gtjlacdueroa"]
+[gd_scene load_steps=10 format=4 uid="uid://gtjlacdueroa"]
 
 [ext_resource type="Texture2D" uid="uid://b211l4db3h6ry" path="res://Asset Collection Files/sunny-land/assets/environment/tileset.png" id="1_eyui0"]
 [ext_resource type="PackedScene" uid="uid://byihrq5m1rd5i" path="res://Player/Player.tscn" id="1_nodyx"]
 [ext_resource type="Script" path="res://Scripts/bg.gd" id="1_sp1ho"]
 [ext_resource type="Texture2D" uid="uid://cmy6biwtv8wb7" path="res://Asset Collection Files/sunny-land/assets/environment/back.png" id="2_3v7o2"]
 [ext_resource type="PackedScene" uid="uid://bhw04euyfiab0" path="res://Enemy/Frog/enemy_frog.tscn" id="5_dilxp"]
-[ext_resource type="Script" path="res://Scripts/UI/health.gd" id="6_bvx63"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bq2sq"]
 texture = ExtResource("1_eyui0")
@@ -190,6 +189,34 @@ texture = ExtResource("1_eyui0")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bq2sq")
 
+[sub_resource type="GDScript" id="GDScript_js8ic"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = \"HP: \" + str(Game.playerHP)
+"
+
+[sub_resource type="GDScript" id="GDScript_m5oj5"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = \"Gem: \" + str(Game.Gem)
+"
+
 [node name="World" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -227,4 +254,14 @@ offset_bottom = 32.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "HP"
-script = ExtResource("6_bvx63")
+script = SubResource("GDScript_js8ic")
+
+[node name="Gem" type="Label" parent="Ui"]
+offset_left = 619.0
+offset_top = 10.0
+offset_right = 659.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Gem"
+script = SubResource("GDScript_m5oj5")

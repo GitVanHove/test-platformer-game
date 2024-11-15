@@ -44,10 +44,12 @@ func _on_player_death_body_entered(body: Node2D) -> void:
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		body.health -= 3
+		Game.playerHP -= 3
 		
 
 func death():
+	Game.Gem += 5
+	Utils.saveGame()
 	chase =  false
 	anim.play("Death")
 	await anim.animation_finished

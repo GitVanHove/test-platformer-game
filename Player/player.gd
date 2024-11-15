@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var health = 10
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 @onready var anim = get_node("AnimationPlayer")
@@ -37,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if direction == 0:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	if health <= 0:
+	if Game.playerHP <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://main.tscn")
 
