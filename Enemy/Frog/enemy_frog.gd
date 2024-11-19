@@ -8,6 +8,7 @@ class_name FrogEnemy
 var is_frog_chase: bool = false
 
 var SPEED = 50
+var roaming_speed = 20
 var health = 10
 var health_max = 10
 var health_min = 0 
@@ -38,33 +39,35 @@ func _physics_process(delta: float) -> void:
 func move(delta):
 	if !dead:
 		if is_roaming and !is_frog_chase:
-			velocity.x = dir.x * SPEED  # Consistent with movement direction
+			velocity.x = dir.x * roaming_speed  # Consistent with movement direction
 		elif is_frog_chase:
-			var direction = (player.position - self.position).normalized()
-			velocity.x = direction.x * SPEED
+			dir = (player.position - self.position).normalized()
+			velocity.x = dir.x * SPEED
 	else:
 		velocity.x = 0
 		
 func handle_animation():
-	if !dead and is_roaming:
+	if !dead and is_roaming and velocity.x != 0:
 		flip_sprite(dir.x)
 		anim.play("Jump")
-	elif !dead and is_frog_chase:
+	elif !dead and is_frog_chase and velocity.x != 0:
 		flip_sprite(dir.x)
 		anim.play("Jump")
+	elif !dead and velocity.x == 0:
+		anim.play("Idle")
 	elif dead:
 		is_roaming = false
-		dead = true
 		death()
 
 func _on_direction_timer_timeout() -> void:
 	direction_timer.wait_time = choose([1.5, 2.0, 2.5])
 	if !is_frog_chase:
-		dir = choose([Vector2.RIGHT, Vector2.LEFT])
+		dir = choose([Vector2.RIGHT, Vector2.LEFT, Vector2.ZERO])
 		velocity.x = 0  # Reset velocity momentarily when changing direction
 
 func flip_sprite(direction_x):
-	anim.flip_h = direction_x < 0 
+	print(direction_x)
+	anim.flip_h = direction_x > 0 
 
 func choose(array):
 	var shuffled = array.duplicate()
