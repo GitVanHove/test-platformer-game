@@ -17,10 +17,12 @@ var taking_damage: bool = false
 var damage_to_deal = 5
 var is_dealing_damage: bool = false
 
-var dir: Vector2 = Vector2.RIGHT  # Initialized
+var dir: Vector2 
 const gravity = 900
 var knockback_force = 200
 var is_roaming: bool = true
+var idle_duration = 1.0  
+var idle_timer: float = 0.0  
 	
 func _ready() -> void:
 	direction_timer.start()  # Start the timer
@@ -37,15 +39,22 @@ func move(delta):
 	if !dead:
 		if is_roaming and !is_frog_chase:
 			velocity.x = dir.x * SPEED  # Consistent with movement direction
+		elif is_frog_chase:
+			var direction = (player.position - self.position).normalized()
+			velocity.x = direction.x * SPEED
 	else:
 		velocity.x = 0
 		
 func handle_animation():
-	if !dead and !taking_damage and !is_dealing_damage:
-		anim.flip_h = dir.x > 0
+	if !dead and is_roaming:
+		flip_sprite(dir.x)
 		anim.play("Jump")
-	elif dead and is_roaming:
+	elif !dead and is_frog_chase:
+		flip_sprite(dir.x)
+		anim.play("Jump")
+	elif dead:
 		is_roaming = false
+		dead = true
 		death()
 
 func _on_direction_timer_timeout() -> void:
@@ -53,6 +62,9 @@ func _on_direction_timer_timeout() -> void:
 	if !is_frog_chase:
 		dir = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x = 0  # Reset velocity momentarily when changing direction
+
+func flip_sprite(direction_x):
+	anim.flip_h = direction_x < 0 
 
 func choose(array):
 	var shuffled = array.duplicate()
@@ -65,3 +77,16 @@ func death():
 	anim.play("Death")
 	await anim.animation_finished
 	self.queue_free()
+
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		print("hello :)")
+		is_frog_chase = true
+		is_roaming = false
+
+func _on_player_detection_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		print("bye :(")
+		is_frog_chase = false
+		is_roaming = true

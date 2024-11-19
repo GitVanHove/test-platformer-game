@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhw04euyfiab0"]
+[gd_scene load_steps=21 format=3 uid="uid://bhw04euyfiab0"]
 
 [ext_resource type="Script" path="res://Enemy/Frog/enemy_frog.gd" id="1_1x75h"]
 [ext_resource type="Texture2D" uid="uid://byjlh3lmj6d8w" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland FX/Spritesheets/enemy-deadth.png" id="1_v5iio"]
@@ -129,6 +129,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6p73"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_db67c"]
+radius = 162.188
+
 [node name="enemyFrog" type="CharacterBody2D"]
 script = ExtResource("1_1x75h")
 
@@ -145,4 +148,11 @@ shape = SubResource("CircleShape2D_h6p73")
 
 [node name="DirectionTimer" type="Timer" parent="."]
 
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_db67c")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
