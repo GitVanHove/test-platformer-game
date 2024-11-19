@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhw04euyfiab0"]
+[gd_scene load_steps=23 format=3 uid="uid://bhw04euyfiab0"]
 
 [ext_resource type="Script" path="res://Enemy/Frog/enemy_frog.gd" id="1_1x75h"]
 [ext_resource type="Texture2D" uid="uid://byjlh3lmj6d8w" path="res://Asset Collection Files/Assets/Props Items and VFX/Sunnyland FX/Spritesheets/enemy-deadth.png" id="1_v5iio"]
 [ext_resource type="Texture2D" uid="uid://5eidsfr3atwu" path="res://Asset Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="2_8ers4"]
 [ext_resource type="Texture2D" uid="uid://qw1sn0cgxxhi" path="res://Asset Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-jump.png" id="3_nf5t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpldc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcrgr"]
 atlas = ExtResource("1_v5iio")
@@ -126,23 +128,59 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h6p73"]
-radius = 9.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_metb3"]
+radius = 165.048
+
+[sub_resource type="GDScript" id="GDScript_ud0kp"]
+script/source = "extends Area2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t1n7"]
+size = Vector2(22.7608, 10)
 
 [node name="enemyFrog" type="CharacterBody2D"]
 script = ExtResource("1_1x75h")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_jpldc")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(1, -11)
 sprite_frames = SubResource("SpriteFrames_mcytr")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.702404
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_h6p73")
+[node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
+position = Vector2(1, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_metb3")
+
+[node name="PlayerDeath" type="Area2D" parent="."]
+position = Vector2(1, -11)
+script = SubResource("GDScript_ud0kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
+position = Vector2(-0.971909, -0.630989)
+rotation = 1.55894
+shape = SubResource("RectangleShape2D_6t1n7")
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+visible = false
+position = Vector2(1, -11)
+script = SubResource("GDScript_ud0kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_6t1n7")
 
 [node name="DirectionTimer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
