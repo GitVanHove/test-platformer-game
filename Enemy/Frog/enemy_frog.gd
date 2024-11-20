@@ -66,7 +66,6 @@ func _on_direction_timer_timeout() -> void:
 		velocity.x = 0  # Reset velocity momentarily when changing direction
 
 func flip_sprite(direction_x):
-	print(direction_x)
 	anim.flip_h = direction_x > 0 
 
 func choose(array):
