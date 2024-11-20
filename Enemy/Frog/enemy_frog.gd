@@ -83,12 +83,10 @@ func death():
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("hello :)")
 		is_frog_chase = true
 		is_roaming = false
 
 func _on_player_detection_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		print("bye :(")
 		is_frog_chase = false
 		is_roaming = true
